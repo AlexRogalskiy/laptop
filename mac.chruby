@@ -91,6 +91,12 @@ fancy_echo "Installing watch, to execute a program periodically and show the out
   brew install watch
 ### end mac-components/packages
 
+fancy_echo "Installing memcached ..."
+  brew install memcached
+  ln -sfv /usr/local/opt/memcached/*.plist ~/Library/LaunchAgents
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist
+### end mac-components/miq-packages
+
 fancy_echo "Starting Postgres ..."
   brew services restart postgresql
 ### end mac-components/start-services

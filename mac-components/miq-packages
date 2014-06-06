@@ -1,0 +1,4 @@
+fancy_echo "Installing memcached ..."
+  brew install memcached
+  ln -sfv /usr/local/opt/memcached/*.plist ~/Library/LaunchAgents
+  launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist
