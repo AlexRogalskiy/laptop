@@ -1,0 +1,20 @@
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+
+for ruby in 1.9.3 2.0.0 2.1.2
+do
+  fancy_echo "Installing Ruby $ruby ..."
+    ruby-install ruby $ruby --no-reinstall
+
+  fancy_echo "Switching to ruby $ruby ..."
+    # Source in chruby again to ensure the new ruby is found
+    source /usr/local/share/chruby/chruby.sh
+    chruby $ruby
+
+  fancy_echo "Updating to latest Rubygems version ..."
+    gem update --system
+
+  fancy_echo "Installing Bundler to install project-specific Ruby gems ..."
+    gem install bundler -v1.3.5
+done
+
+chruby 1.9.3

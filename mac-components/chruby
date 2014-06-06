@@ -1,0 +1,14 @@
+fancy_echo "Installing ruby-install, to install Ruby versions ..."
+  brew install ruby-install
+
+fancy_echo "Installing chruby, to change Ruby versions ..."
+  brew install chruby
+
+fancy_echo "Installing gcc 4.8, to install old Ruby versions ..."
+  # ruby-install ruby 1.9.3-p125 -- CC=gcc-4.8
+  brew tap homebrew/versions
+  brew install gcc48
+
+  if ! grep -qs "chruby.sh" ~/.zshrc; then
+    printf 'source /usr/local/opt/chruby/share/chruby/chruby.sh\n' >> ~/.zshrc
+  fi
